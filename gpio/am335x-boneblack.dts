@@ -108,6 +108,12 @@
 			AM33XX_IOPAD(0x86c, PIN_OUTPUT_PULLDOWN | MUX_MODE7) /* gpmc_a11.GPIO1_27 */
 		>;
 	};
+
+	my_gpio_pins: my_gpio_pins {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x958, PIN_OUTPUT_PULLUP | MUX_MODE2) /* P9_18 I2C SDA */
+		>;
+	};
 };
 
 &lcdc {
@@ -203,5 +209,8 @@
 		compatible = "my,gpio-dev";
 		led-gpios = <&gpio0 27 GPIO_ACTIVE_HIGH>; 	/* P8_17 */
 		btn-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;		/* P9_17 */
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&my_gpio_pins>;	/* Test pinctrl */
 	};
 };
